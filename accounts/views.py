@@ -11,16 +11,14 @@ def login(request):
         password = request.POST.get('psw')
         username = request.POST.get('username')
         user=auth.authenticate(username=username,password=password)
-        print("ddddd")
+     
         if user is not None:
-            print("fff")
             auth.login(request,user)
             
             return redirect('tasks/')
             # return render(request,'todo.html')
 
         else:
-            print("eee")
             messages.info(request,'invalid credentials')
             return redirect('login')    
 
